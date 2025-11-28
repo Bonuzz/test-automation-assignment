@@ -1,0 +1,57 @@
+# Test Results
+results/
+*.html
+*.xml
+log.html
+report.html
+output.xml
+
+# Screenshots from tests
+*.png
+selenium-screenshot*.png
+login_*.png
+logout_*.png
+mobile-*.png
+after_submit.png
+credentials_entered.png
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal notes
+docs/
+ASSESSMENT_ANALYSIS.md
+apk/

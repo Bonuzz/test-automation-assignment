@@ -1,0 +1,6 @@
+robotframework==7.0
+robotframework-seleniumlibrary==6.3.0
+robotframework-requests==0.9.7
+robotframework-appiumlibrary==2.0.0
+selenium==4.15.2
+webdriver-manager==4.0.1
