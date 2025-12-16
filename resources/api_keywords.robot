@@ -7,7 +7,7 @@ Library           Collections
 ${BASE_URL}           https://reqres.in/api
 ${VALID_USER_ID}      12
 ${INVALID_USER_ID}    1234
-${API_KEY}            reqres-free-v1
+${API_KEY}            reqres_a1b4e1521118423089afc306da5b9c01
 
 *** Keywords ***
 
@@ -15,8 +15,10 @@ ${API_KEY}            reqres-free-v1
 
 Setup API Session
     [Documentation]    สร้าง API session
-    ${headers}=    Create Dictionary    x-api-key=${API_KEY}
-    Create Session    reqres    ${BASE_URL}    headers=${headers}    verify=${False}
+    ${headers}=    Create Dictionary
+    ...    x-api-key=${API_KEY}
+    ...    User-Agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+    Create Session    reqres    ${BASE_URL}    headers=${headers}    verify=${True}
 
 Teardown API Session
     [Documentation]    ปิด API session

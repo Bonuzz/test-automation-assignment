@@ -1,0 +1,6 @@
+[robot]
+# เปิด report อัตโนมัติหลังรันเทสเสร็จ
+listener = ["listeners/open_report.py"]
+
+# Output directory
+outputdir = "results"
