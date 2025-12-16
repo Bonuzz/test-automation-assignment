@@ -48,15 +48,15 @@ Add New Todo Item
     [Documentation]    Add a new todo item with the given title
     [Arguments]    ${todo_title}
     Click Element    ${ADD_TODO_BUTTON}
-    Wait Until Page Contains Element    ${TODO_TITLE_INPUT}    5s
+    Wait Until Page Contains Element    ${TODO_TITLE_INPUT}    3s
     Input Text    ${TODO_TITLE_INPUT}    ${todo_title}
     Click Element    ${TODO_SAVE_BUTTON}
-    Wait Until Page Contains    ${todo_title}    5s
+    Wait Until Page Contains    ${todo_title}    3s
 
 Verify Todo Item Exists
     [Documentation]    Verify that a todo item with the given title exists
     [Arguments]    ${todo_title}
-    Wait Until Page Contains    ${todo_title}    5s
+    Wait Until Page Contains    ${todo_title}    3s
 
 Delete Todo Item By Swipe
     [Documentation]    Delete a todo item by swiping left
@@ -68,19 +68,18 @@ Delete Todo Item By Swipe
     ${end_x}=    Evaluate    int(${location['x']} + 10)
     ${y}=    Evaluate    int(${location['y']} + ${size['height']} / 2)
     Swipe    start_x=${start_x}    start_y=${y}    end_x=${end_x}    end_y=${y}    duration=500
-    Sleep    1s
+    Wait Until Page Does Not Contain    ${todo_title}    3s
 
 Verify Todo Item Not Exists
     [Documentation]    Verify that a todo item with the given title does not exist
     [Arguments]    ${todo_title}
-    Sleep    1s
-    Page Should Not Contain Text    ${todo_title}
+    Wait Until Page Does Not Contain    ${todo_title}    3s
 
 Mark Todo As Complete By Tap
     [Documentation]    Mark a todo item as complete by tapping on it
     [Arguments]    ${todo_title}
     Click Element    xpath=//android.widget.TextView[@text='${todo_title}']
-    Sleep    0.5s
+    Wait Until Element Is Visible    xpath=//android.widget.TextView[@text='${todo_title}']    3s
 
 Get Todo Items Count
     [Documentation]    Get the count of todo items in the list
