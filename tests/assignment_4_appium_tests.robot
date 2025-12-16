@@ -32,9 +32,11 @@ TC3: Delete Todo Item
     Delete Todo Item By Swipe    Item to delete
     Verify Todo Item Not Exists    Item to delete
 
-TC4: Mark Todo As Complete
-    [Documentation]    Verify user can mark a todo item as complete by tapping
-    [Tags]    mobile    appium    complete
-    Add New Todo Item    Task to complete
-    Verify Todo Item Exists    Task to complete
-    Mark Todo As Complete By Tap    Task to complete
+TC4: Edit Todo Item
+    [Documentation]    Verify user can edit an existing todo item
+    [Tags]    mobile    appium    edit
+    Add New Todo Item    Original task
+    Verify Todo Item Exists    Original task
+    Edit Todo Item    Original task    Updated task
+    Verify Todo Item Exists    Updated task
+    Verify Todo Item Not Exists    Original task

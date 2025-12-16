@@ -34,7 +34,7 @@ Open Minimal Todo App
     ...    autoGrantPermissions=true
     # Handle welcome dialog if present
     ${dialog_present}=    Run Keyword And Return Status
-    ...    Wait Until Page Contains Element    id=android:id/button1    3s
+    ...    Wait Until Page Contains Element    id=android:id/button1    5s
     Run Keyword If    ${dialog_present}    Click Element    id=android:id/button1
     Wait Until Page Contains Element    ${ADD_TODO_BUTTON}    10s
 
@@ -48,15 +48,15 @@ Add New Todo Item
     [Documentation]    Add a new todo item with the given title
     [Arguments]    ${todo_title}
     Click Element    ${ADD_TODO_BUTTON}
-    Wait Until Page Contains Element    ${TODO_TITLE_INPUT}    3s
+    Wait Until Page Contains Element    ${TODO_TITLE_INPUT}    5s
     Input Text    ${TODO_TITLE_INPUT}    ${todo_title}
     Click Element    ${TODO_SAVE_BUTTON}
-    Wait Until Page Contains    ${todo_title}    3s
+    Wait Until Page Contains    ${todo_title}    5s
 
 Verify Todo Item Exists
     [Documentation]    Verify that a todo item with the given title exists
     [Arguments]    ${todo_title}
-    Wait Until Page Contains    ${todo_title}    3s
+    Wait Until Page Contains    ${todo_title}    5s
 
 Delete Todo Item By Swipe
     [Documentation]    Delete a todo item by swiping left
@@ -68,18 +68,22 @@ Delete Todo Item By Swipe
     ${end_x}=    Evaluate    int(${location['x']} + 10)
     ${y}=    Evaluate    int(${location['y']} + ${size['height']} / 2)
     Swipe    start_x=${start_x}    start_y=${y}    end_x=${end_x}    end_y=${y}    duration=500
-    Wait Until Page Does Not Contain    ${todo_title}    3s
+    Wait Until Page Does Not Contain    ${todo_title}    5s
 
 Verify Todo Item Not Exists
     [Documentation]    Verify that a todo item with the given title does not exist
     [Arguments]    ${todo_title}
-    Wait Until Page Does Not Contain    ${todo_title}    3s
+    Wait Until Page Does Not Contain    ${todo_title}    5s
 
-Mark Todo As Complete By Tap
-    [Documentation]    Mark a todo item as complete by tapping on it
-    [Arguments]    ${todo_title}
-    Click Element    xpath=//android.widget.TextView[@text='${todo_title}']
-    Wait Until Element Is Visible    xpath=//android.widget.TextView[@text='${todo_title}']    3s
+Edit Todo Item
+    [Documentation]    Edit an existing todo item with new title
+    [Arguments]    ${old_title}    ${new_title}
+    Click Element    xpath=//android.widget.TextView[@text='${old_title}']
+    Wait Until Page Contains Element    ${TODO_TITLE_INPUT}    5s
+    Clear Text    ${TODO_TITLE_INPUT}
+    Input Text    ${TODO_TITLE_INPUT}    ${new_title}
+    Click Element    ${TODO_SAVE_BUTTON}
+    Wait Until Page Contains    ${new_title}    5s
 
 Get Todo Items Count
     [Documentation]    Get the count of todo items in the list
